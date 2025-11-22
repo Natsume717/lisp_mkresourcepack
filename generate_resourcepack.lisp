@@ -98,7 +98,7 @@
                (environment-path (merge-pathnames "environment/" textures-path))
                (font_textures-path (merge-pathnames "font/" textures-path))
                (gui-path (merge-pathnames "gui/" textures-path))
-               (item_textures-path (merge-pathnames "item" textures-path))
+               (item_textures-path (merge-pathnames "item/" textures-path))
                (map-path (merge-pathnames "map/" textures-path))
                (misc-path (merge-pathnames "misc/" textures-path))
                (mob_effect-path (merge-pathnames "mob_effect/" textures-path))
