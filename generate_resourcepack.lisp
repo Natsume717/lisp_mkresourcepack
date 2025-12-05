@@ -9,7 +9,6 @@
         (pack.png-path (merge-pathnames "pack.png" desktop-path))
         (gpu_warnlist-path (merge-pathnames "gpu_warnlist.json" assets-path))
         (regional_compliancies-path (merge-pathnames "regional_compliancies.json" assets-path))
-        (sounds-path (merge-pathnames "sounds.json" assets-path))
         (mainPaths (list lzaq-path minecraft-path)))
 
 ;;フォルダの作成
@@ -59,13 +58,6 @@
                         :if-exists :supersede
                         :if-does-not-exist :create))
 
-(with-open-file (stream sounds-path
-                        :direction :output
-                        :if-exists :supersede
-                        :if-does-not-exist :create))
-
-
-
 (dolist (contents-path mainPaths)
         (let* ((atlases-path (merge-pathnames "atlases/" contents-path))
                (blockstates-path (merge-pathnames "blockstates/" contents-path))
@@ -81,6 +73,8 @@
                (texts-path (merge-pathnames "texts/" contents-path))
                (textures-path (merge-pathnames "textures/" contents-path))
                (waypoint_style-path (merge-pathnames "waypoint_style/" contents-path))
+               (sounds-path (merge-pathnames "sounds/" contents-path))
+               (sounds-dic-path (merge-pathnames "sounds.json" contents-path))
                
                (include_font-path (merge-pathnames "include/" font-path))
 
@@ -120,6 +114,7 @@
                          (,texts-path "texts")
                          (,textures-path "textures")
                          (,waypoint_style-path "waypoint_style")
+                         (,sounds-path "sounds")
                          
                          (,include_font-path "include")
                          (,block_models-path "block")
@@ -142,6 +137,11 @@
                          (,particle-path "particle")
                          (,trims-path "trims")))
         (ensure-directories-exist (first entry)))
+
+(with-open-file (stream sounds-dic-path
+                        :direction :output
+                        :if-exists :supersede
+                        :if-does-not-exist :create))
 
 (dolist (contents-path mainPaths)
         (dolist (subdir '("allay/" "armorstand/" "axolotl/" "banner/" "bear/" "bed/" "bee/" "bell/" "boat/" "breeze/" "camel/" "cat/" "chest/" "chest_boat/" "chicken/" "conduit/" "copper_golem/" "cow/" "creaking/" "creeper/" "decorated_pot/" "end_crystal/" "enderdragon/" "enderman/" "equipment/" "fish/" "fox/" "frog/" "ghast/" "goat/" "hoglin/" "horse/" "illager/" "iron_golem/" "llama/" "panda/" "parrot/" "pig/" "piglin/" "player/" "projectiles/" "rabbit/" "sheep/" "shield/" "shulker/" "signs/" "skeleton/" "slime/" "sniffer/" "squid/" "strider/" "tadpole/" "turtle/" "villager/" "warden/" "wither/" "wolf/" "zombie/" "zombie_villager/"))
