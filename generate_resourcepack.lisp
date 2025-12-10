@@ -23,9 +23,9 @@
                         :if-does-not-exist :create)
                         (format stream "{
   \"pack\": {
-    \"pack_format\": 69,
-    \"min_format\": [69.0],
-    \"max_format\": 69,
+    \"pack_format\": 70,
+    \"min_format\": [70.0],
+    \"max_format\": 70,
     \"description\": {
       \"text\": \". \",
       \"extra\": [
